@@ -6,7 +6,7 @@ let randomNumber = function() {
 
 let res = randomNumber();
 
-function guessNumber(attempts) {
+function guessNumber(attempts, res) {
    
    let n = res;
 
@@ -26,24 +26,26 @@ function guessNumber(attempts) {
       } else if (+guessing === n) {
          let victory = confirm('Поздравляю, Вы угадали!Хотели бы сыграть еще?');
          if (victory == true) {
-            guessNumber(10);
+            let newNumber = randomNumber();
+            guessNumber(10, newNumber);
          } else {
             alert('До встречи!')
          }
       } else if (attempts == 0) {
          let defeat = confirm('Попытки закончились, хотите сыграть еще?');
          if (defeat == true) {
-            guessNumber(10);
+            let newNumber = randomNumber();
+            guessNumber(10, newNumber);
          } else {
             alert('До встречи!')
          }
       } else if (+guessing > n) {
          alert(`Загаданное число меньше, осталось попыток : ${attempts}`);
-         guessNumber(attempts - 1);
+         guessNumber(attempts - 1), res;
          console.log(attempts);
       } else {
          alert(`Загаданное число больше, осталось попыток : ${attempts}`);
-         guessNumber(attempts - 1);
+         guessNumber(attempts - 1, res);
       } 
       
    }
@@ -51,7 +53,7 @@ function guessNumber(attempts) {
    return gameConditions();
 }
 
-guessNumber(10);
+guessNumber(10, res);
 
 
 
