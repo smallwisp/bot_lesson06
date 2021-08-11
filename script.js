@@ -8,9 +8,7 @@ let res = randomNumber();
 
 function guessNumber(attempts, res) {
    
-   let n = res;
-
-   console.log(n);
+   console.log(res);
 
    function isNumber(guessing) {
       return !isNaN(parseFloat(guessing)) && isFinite(guessing);
@@ -23,7 +21,7 @@ function guessNumber(attempts, res) {
       } else if (!isNumber(guessing)) {
          alert('Введи число!');
          guessNumber(attempts);
-      } else if (+guessing === n) {
+      } else if (+guessing === res) {
          let victory = confirm('Поздравляю, Вы угадали!Хотели бы сыграть еще?');
          if (victory == true) {
             let newNumber = randomNumber();
@@ -39,7 +37,7 @@ function guessNumber(attempts, res) {
          } else {
             alert('До встречи!')
          }
-      } else if (+guessing > n) {
+      } else if (+guessing > res) {
          alert(`Загаданное число меньше, осталось попыток : ${attempts}`);
          guessNumber(attempts - 1), res;
          console.log(attempts);
@@ -54,6 +52,3 @@ function guessNumber(attempts, res) {
 }
 
 guessNumber(10, res);
-
-
-
